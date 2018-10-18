@@ -17,9 +17,9 @@ import java.sql.Statement;
  */
 public class test {
     public static void main(String[] args) {
-        ConnectionMethods.connectToSQLite();
-        insert();
-        print();
+        ConnectionMethods.getConection();
+        //insert();
+        //print();
         
     }
 

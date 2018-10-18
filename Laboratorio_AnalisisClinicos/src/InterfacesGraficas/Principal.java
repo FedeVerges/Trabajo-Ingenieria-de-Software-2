@@ -5,18 +5,35 @@
  */
 package InterfacesGraficas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author fede_
  */
 public class Principal extends javax.swing.JFrame {
-
+    
+    DefaultTableModel modeloTablaAnalisis;
+   
+    
+    
+    
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        modeloTablaAnalisis = new DefaultTableModel(null,getColumnasTablaAnalisis());
+        
     }
+    
+    
+    
+    public String[] getColumnasTablaAnalisis (){
+        String columna[]= new String[]{"Codigo","Nombre","Consentimiento"," "};
+        return columna;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,33 +125,8 @@ public class Principal extends javax.swing.JFrame {
         jButton_Analisis_CargarOrden1.setFont(new java.awt.Font("Ebrima", 2, 14)); // NOI18N
         jButton_Analisis_CargarOrden1.setText("Análisis");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Nombre", "Consentimiento", "-"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(modeloTablaAnalisis);
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

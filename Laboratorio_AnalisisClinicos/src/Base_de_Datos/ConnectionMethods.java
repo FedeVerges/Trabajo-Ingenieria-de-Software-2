@@ -17,7 +17,7 @@ import java.sql.Statement;
 public class ConnectionMethods {
         public static Connection connection;
 
-    public static void connectToSQLite() {
+    private static void connectToSQLite() {
         try {
             // Create connection to the database.
             connection = DriverManager.getConnection("jdbc:sqlite:base_de_datos/database.db");
@@ -25,6 +25,13 @@ public class ConnectionMethods {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public static Connection getConection(){
+        if(connection == null){
+            connectToSQLite();
+        }
+        return connection;
     }
 
     public static void close(Statement statement) {
@@ -36,7 +43,7 @@ public class ConnectionMethods {
             e.printStackTrace();
         }
     }
-    
+
     
     
 }
