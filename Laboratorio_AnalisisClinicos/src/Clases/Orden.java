@@ -14,6 +14,8 @@ import java.util.Date;
 public class Orden {
     private Date fechaDeIngreso;
     private String Medico;
+    private Paciente paciiente;
+    private Analisis analisis;
 
     public Orden(Date fechaDeIngreso, String Medico) {
         this.fechaDeIngreso = fechaDeIngreso;
