@@ -10,5 +10,19 @@ package Clases;
  * @author fede_
  */
 public class Resultado {
+    private Integer valorTomado;
+
+    public Resultado(Integer valorTomado) {
+        this.valorTomado = valorTomado;
+    }
+
+    public Integer getValorTomado() {
+        return valorTomado;
+    }
+
+    public void setValorTomado(Integer valorTomado) {
+        this.valorTomado = valorTomado;
+    }
+    
     
 }
