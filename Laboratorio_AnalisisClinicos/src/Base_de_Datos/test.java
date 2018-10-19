@@ -25,7 +25,7 @@ public class test {
 
     private static void insert() {
         PreparedStatement ps = null;
-        String INSERT_SQL = "INSERT INTO items VALUES(?,?)";
+        String INSERT_SQL = "INSERT INTO  VALUES(?,?)";
         try {
             ps = ConnectionMethods.connection.prepareStatement(INSERT_SQL);
             ps.setInt(1, 5);

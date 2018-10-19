@@ -12,6 +12,7 @@ import java.util.Date;
  * @author fede_
  */
 public class Orden {
+    private int numero;
     private Date fechaDeIngreso;
     private String Medico;
     private Paciente paciiente;
@@ -20,7 +21,8 @@ public class Orden {
     private Registro_de_cobros ingresos;
     private Bioquimico bioquimico;
 
-    public Orden(Date fechaDeIngreso, String Medico, Paciente paciiente, Analisis analisis, Obra_Social obraSocial, Registro_de_cobros ingresos, Bioquimico bioquimico) {
+    public Orden(int numero,Date fechaDeIngreso, String Medico, Paciente paciiente, Analisis analisis, Obra_Social obraSocial, Registro_de_cobros ingresos, Bioquimico bioquimico) {
+        this.numero = numero;
         this.fechaDeIngreso = fechaDeIngreso;
         this.Medico = Medico;
         this.paciiente = paciiente;
@@ -29,6 +31,11 @@ public class Orden {
         this.ingresos = ingresos;
         this.bioquimico = bioquimico;
     }
+
+    public int getNumero() {
+        return numero;
+    }
+    
     
     public Date getFechaDeIngreso() {
         return fechaDeIngreso;
@@ -57,6 +64,11 @@ public class Orden {
     public Bioquimico getBioquimico() {
         return bioquimico;
     }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
 
     public void setFechaDeIngreso(Date fechaDeIngreso) {
         this.fechaDeIngreso = fechaDeIngreso;

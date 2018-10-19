@@ -15,18 +15,31 @@ import java.util.Date;
  */
 public class Analisis extends AnalisisCompletos{
     //ver de añadir el stock, o los descartables
-    private String nombre;
+    private String nombree;
     private Date fecha_retiro;
     private Boolean consentimiento;
     private int costo; // cantidad de descartables consumidos. 
 
-    public Analisis(String nombre, Date fecha_retiro, Boolean consentimiento, Long codigo, String indicacionesPrevias, Integer cantUnidadesBioquimicas, Descartable costo) {
-        super(codigo, indicacionesPrevias, cantUnidadesBioquimicas);
-        this.nombre = nombre;
+    /**
+     *
+     * @param nombre
+     * @param fecha_retiro
+     * @param consentimiento
+     * @param costo
+     * @param codigo
+     * @param nombre
+     * @param indicacionesPrevias
+     * @param cantUnidadesBioquimicas
+     */
+    public Analisis(String nombree, Date fecha_retiro, Boolean consentimiento, int costo, Long codigo, String nombre, String indicacionesPrevias, Integer cantUnidadesBioquimicas) {
+        super(codigo, nombre, indicacionesPrevias, cantUnidadesBioquimicas);
+        this.nombree = nombre;
         this.fecha_retiro = fecha_retiro;
         this.consentimiento = consentimiento;
-        
+        this.costo = costo;
     }
+
+   
     
    
    public void setNombre(String nombre) {
