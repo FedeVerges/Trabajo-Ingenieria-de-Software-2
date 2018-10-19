@@ -19,14 +19,31 @@ public class Paciente {
     private Date fechaNacimiento;
     private Integer edad;
     private String sexo;
+    private Obra_Social obraSocial;
+    private Orden orden;
 
-    public Paciente(String nombre, String apellido, Long telefono, Date fechaNacimiento, Integer edad, String sexo) {
+    public Paciente(String nombre, String apellido, int dni, Long telefono, Date fechaNacimiento, Integer edad, String sexo, Obra_Social obraSocial, Orden orden) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.dni = dni;
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
         this.edad = edad;
         this.sexo = sexo;
+        this.obraSocial = obraSocial;
+        this.orden = orden;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public Obra_Social getObraSocial() {
+        return obraSocial;
+    }
+
+    public Orden getOrden() {
+        return orden;
     }
 
     public String getNombre() {
@@ -76,7 +93,18 @@ public class Paciente {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+    
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
 
+    public void setObraSocial(Obra_Social obraSocial) {
+        this.obraSocial = obraSocial;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
     
 
     

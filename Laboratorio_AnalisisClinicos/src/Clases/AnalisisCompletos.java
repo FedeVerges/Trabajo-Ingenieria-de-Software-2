@@ -5,6 +5,8 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author fede_
@@ -13,6 +15,7 @@ public class AnalisisCompletos {
     private Long codigo;
     private String indicacionesPrevias;
     private Integer cantUnidadesBioquimicas;
+    
 
     public AnalisisCompletos(Long codigo, String indicacionesPrevias, Integer cantUnidadesBioquimicas) {
         this.codigo = codigo;

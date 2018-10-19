@@ -12,10 +12,14 @@ package Clases;
 public class Registro_de_cobros {
     private Float ingresos;
     private Float precioPorUnidadBParticular;
+    private Obra_Social obraSocial;
+    private Orden orden;
 
-    public Registro_de_cobros(Float ingresos, Float precioPorUnidadBParticular) {
+    public Registro_de_cobros(Float ingresos, Float precioPorUnidadBParticular, Obra_Social obraSocial, Orden orden) {
         this.ingresos = ingresos;
         this.precioPorUnidadBParticular = precioPorUnidadBParticular;
+        this.obraSocial = obraSocial;
+        this.orden = orden;
     }
 
     public Float getIngresos() {
@@ -26,6 +30,14 @@ public class Registro_de_cobros {
         return precioPorUnidadBParticular;
     }
 
+    public Obra_Social getObraSocial() {
+        return obraSocial;
+    }
+
+    public Orden getOrden() {
+        return orden;
+    }
+    
     public void setIngresos(Float ingresos) {
         this.ingresos = ingresos;
     }
@@ -33,6 +45,16 @@ public class Registro_de_cobros {
     public void setPrecioPorUnidadBParticular(Float precioPorUnidadBParticular) {
         this.precioPorUnidadBParticular = precioPorUnidadBParticular;
     }
+
+    public void setObraSocial(Obra_Social obraSocial) {
+        this.obraSocial = obraSocial;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
+    
+    
     
     
 }

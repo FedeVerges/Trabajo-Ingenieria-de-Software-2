@@ -11,6 +11,8 @@ package Clases;
  */
 public class Bioquimico extends Persona{
  private String cuil;
+ private Orden orden;
+ 
 
 public Bioquimico(String cui,String nom,String ape,Long dni){
     super(nom,ape,dni);

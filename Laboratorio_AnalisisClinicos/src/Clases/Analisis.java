@@ -18,12 +18,14 @@ public class Analisis extends AnalisisCompletos{
     private String nombre;
     private Date fecha_retiro;
     private Boolean consentimiento;
+    private int costo; // cantidad de descartables consumidos. 
 
-    public Analisis(String nombre, Date fecha_retiro, Boolean consentimiento, Long codigo, String indicacionesPrevias, Integer cantUnidadesBioquimicas) {
+    public Analisis(String nombre, Date fecha_retiro, Boolean consentimiento, Long codigo, String indicacionesPrevias, Integer cantUnidadesBioquimicas, Descartable costo) {
         super(codigo, indicacionesPrevias, cantUnidadesBioquimicas);
         this.nombre = nombre;
         this.fecha_retiro = fecha_retiro;
         this.consentimiento = consentimiento;
+        
     }
     
    
