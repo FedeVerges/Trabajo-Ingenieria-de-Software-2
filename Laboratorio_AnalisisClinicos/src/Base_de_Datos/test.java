@@ -18,18 +18,22 @@ import java.sql.Statement;
 public class test {
     public static void main(String[] args) {
         ConnectionMethods.getConection();
-        //insert();
-        //print();
+        insert();
+        print();
         
     }
 
     private static void insert() {
         PreparedStatement ps = null;
-        String INSERT_SQL = "INSERT INTO  VALUES(?,?)";
+        String INSERT_SQL = "INSERT INTO 'ANALISIS' VALUES(?,?,?,?,?,?)";
         try {
             ps = ConnectionMethods.connection.prepareStatement(INSERT_SQL);
-            ps.setInt(1, 5);
-            ps.setString(2, "Pepito");
+            ps.setInt(1, 680);
+            ps.setString(2, "Hemograma");
+            ps.setString(3,"Ayuno");
+            ps.setInt(4,450);
+            ps.setBoolean(5, false);
+            ps.setInt(6, 5);
             ps.executeUpdate();
             System.out.println("Correct insert!");
         } catch (SQLException e) {
@@ -43,7 +47,7 @@ public class test {
         Statement statement = null;
         try {
             statement = ConnectionMethods.connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM ITEMS");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM 'ANALISIS'");
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
             System.out.println();
             int numberOfColumns = resultSetMetaData.getColumnCount();

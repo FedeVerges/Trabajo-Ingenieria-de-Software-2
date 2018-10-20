@@ -13,57 +13,73 @@ import java.util.Date;
  *
  * @author fede_
  */
-public class Analisis extends AnalisisCompletos{
-    //ver de añadir el stock, o los descartables
-    private String nombree;
-    private Date fecha_retiro;
+public class Analisis{
+    private int codigo;
+    private String nombre;
+    private String indicacionesPrevias;
+    private int cantidadUnidadesB;
     private Boolean consentimiento;
-    private int costo; // cantidad de descartables consumidos. 
+    private int costoDescartables; // cantidad de descartables consumidos. 
 
-    /**
-     *
-     * @param nombre
-     * @param fecha_retiro
-     * @param consentimiento
-     * @param costo
-     * @param codigo
-     * @param nombre
-     * @param indicacionesPrevias
-     * @param cantUnidadesBioquimicas
-     */
-    public Analisis(String nombree, Date fecha_retiro, Boolean consentimiento, int costo, Long codigo, String nombre, String indicacionesPrevias, Integer cantUnidadesBioquimicas) {
-        super(codigo, nombre, indicacionesPrevias, cantUnidadesBioquimicas);
-        this.nombree = nombre;
-        this.fecha_retiro = fecha_retiro;
-        this.consentimiento = consentimiento;
-        this.costo = costo;
-    }
-
-   
-    
-   
-   public void setNombre(String nombre) {
+    public Analisis(int codigo, String nombre, String indicacionesPrevias, int cantidadUnidadesB, Boolean consentimiento, int costoDescartables) {
+        this.codigo = codigo;
         this.nombre = nombre;
-    }
-
-    public void setFecha_retiro(Date fecha_retiro) {
-        this.fecha_retiro = fecha_retiro;
-    }
-
-    public void setConsentimiento(Boolean consentimiento) {
+        this.indicacionesPrevias = indicacionesPrevias;
+        this.cantidadUnidadesB = cantidadUnidadesB;
         this.consentimiento = consentimiento;
+        this.costoDescartables = costoDescartables;
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public Date getFecha_retiro() {
-        return fecha_retiro;
+    public String getIndicacionesPrevias() {
+        return indicacionesPrevias;
+    }
+
+    public int getCantidadUnidadesB() {
+        return cantidadUnidadesB;
     }
 
     public Boolean getConsentimiento() {
         return consentimiento;
     }
-   
+
+    public int getCostoDescartables() {
+        return costoDescartables;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setIndicacionesPrevias(String indicacionesPrevias) {
+        this.indicacionesPrevias = indicacionesPrevias;
+    }
+
+    public void setCantidadUnidadesB(int cantidadUnidadesB) {
+        this.cantidadUnidadesB = cantidadUnidadesB;
+    }
+
+    public void setConsentimiento(Boolean consentimiento) {
+        this.consentimiento = consentimiento;
+    }
+
+    public void setCostoDescartables(int costoDescartables) {
+        this.costoDescartables = costoDescartables;
+    }
+    
+
+
+
+
 }

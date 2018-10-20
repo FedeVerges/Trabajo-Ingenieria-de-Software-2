@@ -6,10 +6,12 @@
 package Manager;
 
 import Base_de_Datos.ConnectionMethods;
-import InterfacesGraficas.Principal;
+import Clases.Analisis;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,21 +19,50 @@ import java.sql.ResultSetMetaData;
  */
 public class ManagerAnalisis {
 
-    public void setFilasTablaAnalisis() {
+    public ArrayList<Analisis> recuperarFilas() {
+        Statement statement = null;
+        String query = "SELECT * FROM 'ANALISIS'";
+        ArrayList<Analisis> datosAnalisis = new ArrayList<Analisis>();
+        Analisis a;
         try {
-            ConnectionMethods.getConection();
-            String SELECT_SQL = "SELECT * FROM ANALISIS";
-            PreparedStatement ps = ConnectionMethods.connection.prepareStatement(SELECT_SQL);
-            ResultSet res = ps.executeQuery();
-            ResultSetMetaData resultSetMetaData = res.getMetaData();
+            statement = ConnectionMethods.getConection().createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                a = new Analisis((resultSet.getInt("A_codigo")), (resultSet.getString("A_NOMBRE")), (resultSet.getString("A_INDICACIONES")), (resultSet.getInt("A_CUB")), (resultSet.getBoolean("A_CONSENTIMIENTO")), (resultSet.getInt("A_COSTODESCARTABLES")));
+                datosAnalisis.add(a);
 
-            int numberOfColumns = resultSetMetaData.getColumnCount();
-           //  res.get
-     
-            
+            }
+            resultSet.close();
+            statement.close();
 
-        } catch (Exception e) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            ConnectionMethods.close(statement);
         }
+        return datosAnalisis;
+    }
+
+    public void cargarAnalisis(Analisis a) throws SQLException {
+        PreparedStatement ps = null;
+        String insertSql = "INSERT INTO 'ANALISIS VALUES (?,?,?,?,?,?)";
+        try{
+            ps = ConnectionMethods.getConection().prepareStatement(insertSql);
+            ps.setInt(0,a.getCodigo());
+            ps.setString(1,a.getNombre());
+            ps.setString(2,a.getIndicacionesPrevias());
+            ps.setInt(3,a.getCantidadUnidadesB());
+            ps.setBoolean(4, a.getConsentimiento());
+            ps.setInt(5, a.getCostoDescartables());
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            ConnectionMethods.close(ps);
+        }
+
     }
 }

@@ -5,6 +5,13 @@
  */
 package InterfacesGraficas;
 
+import Clases.Analisis;
+import Manager.ManagerAnalisis;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,29 +19,44 @@ import javax.swing.table.DefaultTableModel;
  * @author fede_
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     DefaultTableModel modeloTablaAnalisis;
-   
-    
-    
-    
+
     /**
      * Creates new form Principal
      */
     public Principal() {
+        modeloTablaAnalisis = new DefaultTableModel(null, getColumnasTablaAnalisis());
         initComponents();
-        modeloTablaAnalisis = new DefaultTableModel(null,getColumnasTablaAnalisis());
+        jFrame_ListadoAnalisis.setVisible(true);
+        jFrame_ListadoAnalisis.setSize(800, 800);
+        jFrame_ListadoAnalisis.setAlwaysOnTop(true);
+        ManagerAnalisis ma = new ManagerAnalisis();
+        ArrayList<Analisis> datos = ma.recuperarFilas();
+        int fila= 0;
+        for (Analisis i: datos){
+            modeloTablaAnalisis.addRow(new Object [6]);
+            jTable_Analisis.setValueAt(i.getCodigo(),fila, 0);
+            jTable_Analisis.setValueAt(i.getNombre(),fila, 1);
+            jTable_Analisis.setValueAt(i.getIndicacionesPrevias(),fila, 2);
+            jTable_Analisis.setValueAt(i.getCantidadUnidadesB(),fila, 3);
+            jTable_Analisis.setValueAt(i.getConsentimiento(),fila, 4);
+            jTable_Analisis.setValueAt(i.getCostoDescartables(),fila, 5);
+            fila++;
+            
+        }
         
+       
+
     }
     
-   
     
-    
-    public String[] getColumnasTablaAnalisis (){
-        String columna[]= new String[]{"Codigo","Nombre","Consentimiento"," "};
+
+    public String[] getColumnasTablaAnalisis() {
+        String columna[] = new String[]{"Codigo", "Nombre", "indicaciones", "cantidad Unidades Bioquimicas", "Consentimiento", "costo descartables"};
         return columna;
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,9 +68,11 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup_sexo = new javax.swing.ButtonGroup();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        jFrame_ListadoAnalisis = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_Analisis = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -73,11 +97,29 @@ public class Principal extends javax.swing.JFrame {
         jButtonMasculino = new javax.swing.JButton();
         jButton_Femenino = new javax.swing.JButton();
 
-        jMenu3.setText("File");
-        jMenuBar2.add(jMenu3);
+        jTable_Analisis.setModel(modeloTablaAnalisis);
+        jScrollPane2.setViewportView(jTable_Analisis);
 
-        jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel2.setText("Analisis");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jFrame_ListadoAnalisis.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -291,17 +333,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Analisis_CargarOrden1;
     private javax.swing.JButton jButton_Femenino;
     private javax.swing.JButton jButton_ListadoPaciente_CargarOrden;
+    private javax.swing.JFrame jFrame_ListadoAnalisis;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButton_Masculino;
     private javax.swing.JRadioButton jRadioButton_femenino;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable_Analisis;
     private javax.swing.JTextField jTextField_Apellido;
     private javax.swing.JTextField jTextField_Medico_CargarOrden;
     private javax.swing.JTextField jTextField_Nombre;
