@@ -30,9 +30,8 @@ public class ManagerAnalisis {
             
             ResultSet resultSet = statement.executeQuery(query);            
             while (resultSet.next()) {
-                a = new Analisis((resultSet.getInt("A_codigo")), (resultSet.getString("A_NOMBRE")), (resultSet.getString("A_INDICACIONES")), (resultSet.getInt("A_CANT.UNIDADES_B")), (resultSet.getBoolean("A_CONSENTIMIENTO")), (resultSet.getInt("A_COSTODESCARTABLES")));
+                a = new Analisis((resultSet.getInt("A_codigo")), (resultSet.getString("A_NOMBRE")), (resultSet.getString("A_INDICACIONES")), (resultSet.getInt("A_CANT.UNIDADES_B")), (resultSet.getBoolean("A_CONSENTIMIENTO")), (resultSet.getInt("A_COSTODESCARTABLES")),(resultSet.getString("A_VALORES_REFERENCIA")));
                 datosAnalisis.add(a);
-
             }
             resultSet.close();
             statement.close();
@@ -48,7 +47,7 @@ public class ManagerAnalisis {
 
     public void cargarAnalisis(Analisis a) throws SQLException {
         PreparedStatement ps = null;
-        String insertSql = "INSERT INTO 'ANALISIS VALUES (?,?,?,?,?,?)";
+        String insertSql = "INSERT INTO 'ANALISIS VALUES (?,?,?,?,?,?,?)";
         try{
             ps = ConnectionMethods.getConection().prepareStatement(insertSql);
             ps.setInt(0,a.getCodigo());
@@ -57,7 +56,7 @@ public class ManagerAnalisis {
             ps.setInt(3,a.getCantidadUnidadesB());
             ps.setBoolean(4, a.getConsentimiento());
             ps.setInt(5, a.getCostoDescartables());
-            
+            ps.setString(6, a.getValoresReferencia());
             ps.executeUpdate();
             
         } catch (SQLException e) {

@@ -19,16 +19,19 @@ public class Analisis{
     private String indicacionesPrevias;
     private int cantidadUnidadesB;
     private Boolean consentimiento;
-    private int costoDescartables; // cantidad de descartables consumidos. 
+    private int costoDescartables; // cantidad de descartables consumidos.
+    private String valoresReferencia;
 
-    public Analisis(int codigo, String nombre, String indicacionesPrevias, int cantidadUnidadesB, Boolean consentimiento, int costoDescartables) {
+    public Analisis(int codigo, String nombre, String indicacionesPrevias, int cantidadUnidadesB, Boolean consentimiento, int costoDescartables, String valoresReferencia) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.indicacionesPrevias = indicacionesPrevias;
         this.cantidadUnidadesB = cantidadUnidadesB;
         this.consentimiento = consentimiento;
         this.costoDescartables = costoDescartables;
+        this.valoresReferencia = valoresReferencia;
     }
+
 
     public int getCodigo() {
         return codigo;
@@ -54,6 +57,11 @@ public class Analisis{
         return costoDescartables;
     }
 
+    public String getValoresReferencia() {
+        return valoresReferencia;
+    }
+    
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
@@ -77,9 +85,11 @@ public class Analisis{
     public void setCostoDescartables(int costoDescartables) {
         this.costoDescartables = costoDescartables;
     }
+
+    public void setValoresReferencia(String valoresReferencia) {
+        this.valoresReferencia = valoresReferencia;
+    }
     
-
-
 
 
 }
