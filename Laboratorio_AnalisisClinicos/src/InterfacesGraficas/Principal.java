@@ -22,16 +22,20 @@ import javax.swing.table.DefaultTableModel;
 public class Principal extends javax.swing.JFrame {
 
     DefaultTableModel modeloTablaAnalisis;
+    DefaultTableModel modeloTablaOrdenesPendientes;
     ManagerAnalisis ma = new ManagerAnalisis();
+    
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         modeloTablaAnalisis = new DefaultTableModel(null, ma.recuperarColumnas());
+        modeloTablaOrdenesPendientes= new DefaultTableModel(null, mo.recuperarColumnas());
         initComponents();
         jTable_Analisis.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         cargarTablaAnalisis();
+        
         
 
     }
@@ -73,6 +77,7 @@ public class Principal extends javax.swing.JFrame {
         jTable_Analisis = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane_menuPestañas = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         jPanel_menuPestañas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         fecha_CargarOrden = new javax.swing.JLabel();
@@ -94,7 +99,15 @@ public class Principal extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        datosAnalisis_CargarOrden2 = new javax.swing.JLabel();
+        datosAnalisis_CargarOrden3 = new javax.swing.JLabel();
+        datosAnalisis_CargarOrden4 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton_Femenino = new javax.swing.JButton();
 
@@ -133,6 +146,19 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 0));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 756, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 521, Short.MAX_VALUE)
+        );
+
+        jTabbedPane_menuPestañas.addTab("Imprimir Resultados", jPanel3);
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
         jLabel1.setText("Ingrese los datos de la Orden");
@@ -226,7 +252,7 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(fecha_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fecha_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +260,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(datosAnalisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(164, 164, 164)
                         .addComponent(jButton_Analisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel_menuPestañasLayout.setVerticalGroup(
@@ -282,31 +308,74 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane_menuPestañas.addTab("Cargar Orden", jPanel_menuPestañas);
 
+        jScrollPane3.setViewportView(jTable2);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane5.setViewportView(jTextArea1);
+
+        datosAnalisis_CargarOrden2.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
+        datosAnalisis_CargarOrden2.setText("Seleccione una orden sin terminar de la lista:");
+
+        datosAnalisis_CargarOrden3.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
+        datosAnalisis_CargarOrden3.setText("Valores de referencia:");
+
+        datosAnalisis_CargarOrden4.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
+        datosAnalisis_CargarOrden4.setText("Cargue los valores :");
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable4);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 756, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(datosAnalisis_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datosAnalisis_CargarOrden4, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(datosAnalisis_CargarOrden3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(datosAnalisis_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datosAnalisis_CargarOrden3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datosAnalisis_CargarOrden4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jTabbedPane_menuPestañas.addTab("Cargar Resultados", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 756, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
-        );
-
-        jTabbedPane_menuPestañas.addTab("Imprimir Resultados", jPanel3);
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
@@ -317,10 +386,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane_menuPestañas)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane_menuPestañas))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -329,8 +399,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane_menuPestañas, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jTabbedPane_menuPestañas, javax.swing.GroupLayout.PREFERRED_SIZE, 549, Short.MAX_VALUE))
         );
 
         pack();
@@ -385,6 +454,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel Medico_cargarOrden;
     private javax.swing.ButtonGroup buttonGroup_sexo;
     private javax.swing.JLabel datosAnalisis_CargarOrden1;
+    private javax.swing.JLabel datosAnalisis_CargarOrden2;
+    private javax.swing.JLabel datosAnalisis_CargarOrden3;
+    private javax.swing.JLabel datosAnalisis_CargarOrden4;
     private javax.swing.JLabel datosPaciente_CargarOrden;
     private javax.swing.JLabel fecha_CargarOrden;
     private javax.swing.JLabel fecha_CargarOrden1;
@@ -405,9 +477,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane_menuPestañas;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable_Analisis;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField_Apellido;
     private javax.swing.JTextField jTextField_Medico_CargarOrden;
     private javax.swing.JTextField jTextField_Nombre;
