@@ -7,6 +7,7 @@ package InterfacesGraficas;
 
 import Clases.Analisis;
 import Manager.ManagerAnalisis;
+import Manager.Manager_Ordenes;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,43 +25,46 @@ public class Principal extends javax.swing.JFrame {
     DefaultTableModel modeloTablaAnalisis;
     DefaultTableModel modeloTablaOrdenesPendientes;
     ManagerAnalisis ma = new ManagerAnalisis();
-    
+    Manager_Ordenes managerOrdenes = new Manager_Ordenes();
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         modeloTablaAnalisis = new DefaultTableModel(null, ma.recuperarColumnas());
-        modeloTablaOrdenesPendientes= new DefaultTableModel(null, mo.recuperarColumnas());
+        modeloTablaOrdenesPendientes = new DefaultTableModel(null, managerOrdenes.recuperarColumnas());
         initComponents();
         jTable_Analisis.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        jTable2_TablaOrdenesPendientes.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         cargarTablaAnalisis();
-        
-        
+        cargarTablaOrdenesPendientes();
 
     }
-    
-    
 
-   
     // metodo para cargar la tabla de analisis.
-    public void cargarTablaAnalisis(){
+    public void cargarTablaAnalisis() {
         ManagerAnalisis ma = new ManagerAnalisis();
         ArrayList<Analisis> datos = ma.recuperarFilas();
-        int fila= 0;
-        for (Analisis i: datos){
-            modeloTablaAnalisis.addRow(new Object [6]);
-            jTable_Analisis.setValueAt(i.getCodigo(),fila, 0);
-            jTable_Analisis.setValueAt(i.getNombre(),fila, 1);
-            jTable_Analisis.setValueAt(i.getIndicacionesPrevias(),fila, 2);
-            jTable_Analisis.setValueAt(i.getCantidadUnidadesB(),fila, 3);
-            jTable_Analisis.setValueAt(i.getConsentimiento(),fila, 4);
-            jTable_Analisis.setValueAt(i.getCostoDescartables(),fila, 5);
+        int fila = 0;
+        for (Analisis i : datos) {
+            modeloTablaAnalisis.addRow(new Object[6]);
+            jTable_Analisis.setValueAt(i.getCodigo(), fila, 0);
+            jTable_Analisis.setValueAt(i.getNombre(), fila, 1);
+            jTable_Analisis.setValueAt(i.getIndicacionesPrevias(), fila, 2);
+            jTable_Analisis.setValueAt(i.getCantidadUnidadesB(), fila, 3);
+            jTable_Analisis.setValueAt(i.getConsentimiento(), fila, 4);
+            jTable_Analisis.setValueAt(i.getCostoDescartables(), fila, 5);
             fila++;
-            
+
         }
-        
+
     }
+    public void cargarTablaOrdenesPendientes(){
+         
+
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,7 +81,6 @@ public class Principal extends javax.swing.JFrame {
         jTable_Analisis = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane_menuPestañas = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
         jPanel_menuPestañas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         fecha_CargarOrden = new javax.swing.JLabel();
@@ -98,16 +101,17 @@ public class Principal extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 450), new java.awt.Dimension(0, 450), new java.awt.Dimension(32767, 450));
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2_cargarResultados = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable2_TablaOrdenesPendientes = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextArea1_valoresDeReferencia = new javax.swing.JTextArea();
         datosAnalisis_CargarOrden2 = new javax.swing.JLabel();
         datosAnalisis_CargarOrden3 = new javax.swing.JLabel();
         datosAnalisis_CargarOrden4 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jTable4_cargarValoresAnalisi = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton_Femenino = new javax.swing.JButton();
 
@@ -146,19 +150,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 0));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 756, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
-        );
-
-        jTabbedPane_menuPestañas.addTab("Imprimir Resultados", jPanel3);
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
         jLabel1.setText("Ingrese los datos de la Orden");
@@ -260,7 +251,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(datosAnalisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(164, 164, 164)
                         .addComponent(jButton_Analisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel_menuPestañasLayout.setVerticalGroup(
@@ -308,11 +299,24 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane_menuPestañas.addTab("Cargar Orden", jPanel_menuPestañas);
 
-        jScrollPane3.setViewportView(jTable2);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 776, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane5.setViewportView(jTextArea1);
+        jTabbedPane_menuPestañas.addTab("Imprimir Resultados", jPanel3);
+
+        jScrollPane3.setViewportView(jTable2_TablaOrdenesPendientes);
+
+        jTextArea1_valoresDeReferencia.setColumns(20);
+        jTextArea1_valoresDeReferencia.setRows(5);
+        jScrollPane5.setViewportView(jTextArea1_valoresDeReferencia);
 
         datosAnalisis_CargarOrden2.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
         datosAnalisis_CargarOrden2.setText("Seleccione una orden sin terminar de la lista:");
@@ -323,7 +327,7 @@ public class Principal extends javax.swing.JFrame {
         datosAnalisis_CargarOrden4.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
         datosAnalisis_CargarOrden4.setText("Cargue los valores :");
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jTable4_cargarValoresAnalisi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -334,48 +338,48 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane6.setViewportView(jTable4);
+        jScrollPane6.setViewportView(jTable4_cargarValoresAnalisi);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2_cargarResultadosLayout = new javax.swing.GroupLayout(jPanel2_cargarResultados);
+        jPanel2_cargarResultados.setLayout(jPanel2_cargarResultadosLayout);
+        jPanel2_cargarResultadosLayout.setHorizontalGroup(
+            jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2_cargarResultadosLayout.createSequentialGroup()
                 .addComponent(datosAnalisis_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2_cargarResultadosLayout.createSequentialGroup()
+                .addGroup(jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(datosAnalisis_CargarOrden4, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGroup(jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2_cargarResultadosLayout.createSequentialGroup()
                         .addComponent(datosAnalisis_CargarOrden3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2_cargarResultadosLayout.createSequentialGroup()
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel2_cargarResultadosLayout.setVerticalGroup(
+            jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2_cargarResultadosLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(datosAnalisis_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(datosAnalisis_CargarOrden3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(datosAnalisis_CargarOrden4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        jTabbedPane_menuPestañas.addTab("Cargar Resultados", jPanel2);
+        jTabbedPane_menuPestañas.addTab("Cargar Resultados", jPanel2_cargarResultados);
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
@@ -388,10 +392,9 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane_menuPestañas))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jTabbedPane_menuPestañas)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,7 +411,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton_Analisis_CargarOrden1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Analisis_CargarOrden1ActionPerformed
         jFrame_ListadoAnalisis.setVisible(true);
         jFrame_ListadoAnalisis.setLocationRelativeTo(jButton_Analisis_CargarOrden1);
-        jFrame_ListadoAnalisis.setSize(800,450);
+        jFrame_ListadoAnalisis.setSize(800, 450);
     }//GEN-LAST:event_jButton_Analisis_CargarOrden1ActionPerformed
 
     private void jButton_ListadoPaciente_CargarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ListadoPaciente_CargarOrdenActionPerformed
@@ -469,7 +472,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel2_cargarResultados;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel_menuPestañas;
@@ -482,10 +485,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane_menuPestañas;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable2_TablaOrdenesPendientes;
+    private javax.swing.JTable jTable4_cargarValoresAnalisi;
     private javax.swing.JTable jTable_Analisis;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea1_valoresDeReferencia;
     private javax.swing.JTextField jTextField_Apellido;
     private javax.swing.JTextField jTextField_Medico_CargarOrden;
     private javax.swing.JTextField jTextField_Nombre;

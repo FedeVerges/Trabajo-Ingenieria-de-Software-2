@@ -10,6 +10,10 @@ package Manager;
  * @author fede_
  */
 public class Manager_Ordenes {
+
+    public int recuperarColumnas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
