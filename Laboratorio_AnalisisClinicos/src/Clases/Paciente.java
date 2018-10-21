@@ -22,7 +22,7 @@ public class Paciente {
     private Obra_Social obraSocial;
     private Orden orden;
 
-    public Paciente(String nombre, String apellido, int dni, Long telefono, Date fechaNacimiento, Integer edad, String sexo, Obra_Social obraSocial, Orden orden) {
+    public Paciente(String nombre, String apellido, int dni, Long telefono, Date fechaNacimiento, int edad, String sexo, Obra_Social obraSocial) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -31,7 +31,6 @@ public class Paciente {
         this.edad = edad;
         this.sexo = sexo;
         this.obraSocial = obraSocial;
-        this.orden = orden;
     }
 
     public int getDni() {

@@ -6,32 +6,36 @@
 package Manager;
 
 import Base_de_Datos.ConnectionMethods;
-import Clases.Analisis;
+import Clases.Obra_Social;
+import Clases.Paciente;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
  *
  * @author fede_
  */
-public class ManagerAnalisis {
-
-    public ArrayList<Analisis> recuperarFilas() {
+/*
+public class ManagerPacientes {
+     public ArrayList<Paciente> recuperarFilas() {
         Statement statement = null;
         String query = "SELECT * FROM 'ANALISIS'";
-        ArrayList<Analisis> datosAnalisis = new ArrayList<Analisis>();
-        Analisis a;
+        ArrayList<Paciente> datosPaciente = new ArrayList<Paciente>();
+        Paciente p;
         try {
             statement = ConnectionMethods.getConection().createStatement();
             
-            ResultSet resultSet = statement.executeQuery(query);            
+            ResultSet resultSet = statement.executeQuery(query); 
+            ResultSet resultSet2 = statement.executeQuery("Select * FROM 'OBRA SOCIAL' WHERE O_Nombre ="+ resultSet.getString("O_NOMBRE"));
+            Obra_Social o = new Obra_Social((resultSet2.getString("O_NOMBERE")),(resultSet2.getInt("O_TELEFONO")),(resultSet2.getFloat("O_PUB")));
+            
             while (resultSet.next()) {
-                a = new Analisis((resultSet.getInt("A_codigo")), (resultSet.getString("A_NOMBRE")), (resultSet.getString("A_INDICACIONES")), (resultSet.getInt("A_CANT.UNIDADES_B")), (resultSet.getBoolean("A_CONSENTIMIENTO")), (resultSet.getInt("A_COSTODESCARTABLES")));
-                datosAnalisis.add(a);
+                p = new Paciente((resultSet.getString("P_NOMBRE")), (resultSet.getString("P_APELLIDO")), (resultSet.getInt("P_DNI")), (resultSet.getLong("P_TELEFONO")), (resultSet.getString("P_FECHA_NACIMIENTO")), (resultSet.getInt("P_EDAD")), (resultSet.getString("P_SEXO")),(o));
+                datosPaciente.add(p);
 
             }
             resultSet.close();
@@ -43,12 +47,12 @@ public class ManagerAnalisis {
         } finally {
             ConnectionMethods.close(statement);
         }
-        return datosAnalisis;
+        return datosPaciente;
     }
 
-    public void cargarAnalisis(Analisis a) throws SQLException {
+    public void cargarAnalisis(Paciente p) throws SQLException {
         PreparedStatement ps = null;
-        String insertSql = "INSERT INTO 'ANALISIS VALUES (?,?,?,?,?,?)";
+        String insertSql = "INSERT INTO 'PACIENTES' VALUES (?,?,?,?,?,?,?,?)";
         try{
             ps = ConnectionMethods.getConection().prepareStatement(insertSql);
             ps.setInt(0,a.getCodigo());
@@ -93,4 +97,6 @@ public class ManagerAnalisis {
         return columnas;
         
     }
+    
 }
+*/
