@@ -7,10 +7,13 @@ package InterfacesGraficas;
 
 import Clases.Analisis;
 import Manager.ManagerAnalisis;
+import Manager.ManagerPaciente;
 import Manager.Manager_Ordenes;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
@@ -32,7 +35,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         modeloTablaAnalisis = new DefaultTableModel(null, ma.recuperarColumnas());
-        modeloTablaOrdenesPendientes = new DefaultTableModel(null, managerOrdenes.recuperarColumnas());
+        // modeloTablaOrdenesPendientes = new DefaultTableModel(null, managerOrdenes.recuperarColumnas());
         initComponents();
         jTable_Analisis.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         jTable2_TablaOrdenesPendientes.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
@@ -59,11 +62,10 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
-    public void cargarTablaOrdenesPendientes(){
-         
+
+    public void cargarTablaOrdenesPendientes() {
 
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,7 +103,11 @@ public class Principal extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 450), new java.awt.Dimension(0, 450), new java.awt.Dimension(32767, 450));
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
+        jButton_CargarOrden = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jDateChooser_fechaNacimiento = new com.toedter.calendar.JDateChooser();
+        jDateChooser_FechaIngreso = new com.toedter.calendar.JDateChooser();
         jPanel2_cargarResultados = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2_TablaOrdenesPendientes = new javax.swing.JTable();
@@ -112,6 +118,7 @@ public class Principal extends javax.swing.JFrame {
         datosAnalisis_CargarOrden4 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable4_cargarValoresAnalisi = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jButton_Femenino = new javax.swing.JButton();
 
@@ -213,104 +220,127 @@ public class Principal extends javax.swing.JFrame {
         jRadioButton2.setFont(new java.awt.Font("Ebrima", 0, 11)); // NOI18N
         jRadioButton2.setText("Femenino");
 
+        jButton_CargarOrden.setBackground(java.awt.Color.darkGray);
+        jButton_CargarOrden.setFont(new java.awt.Font("Ebrima", 2, 14)); // NOI18N
+        jButton_CargarOrden.setText("Cargar Orden");
+        jButton_CargarOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CargarOrdenActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel_menuPestañasLayout = new javax.swing.GroupLayout(jPanel_menuPestañas);
         jPanel_menuPestañas.setLayout(jPanel_menuPestañasLayout);
         jPanel_menuPestañasLayout.setHorizontalGroup(
             jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fecha_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                                .addComponent(Medico_cargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_Medico_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(datosPaciente_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jButton_ListadoPaciente_CargarOrden))
+                    .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(fecha_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser_fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
+                        .addComponent(fecha_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jRadioButton1)
+                        .addGap(0, 0, 0)
+                        .addComponent(jRadioButton2))
+                    .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jButton_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
                         .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                                .addComponent(datosPaciente_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton_ListadoPaciente_CargarOrden))
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addComponent(fecha_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fecha_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Medico_cargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fecha_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_Medico_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser_FechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
                         .addComponent(datosAnalisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_Analisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4)))
         );
         jPanel_menuPestañasLayout.setVerticalGroup(
             jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datosAnalisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Analisis_CargarOrden1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(19, 19, 19)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
                 .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                        .addComponent(fecha_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1)
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fecha_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser_FechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Medico_cargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Medico_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(datosPaciente_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_ListadoPaciente_CargarOrden))
-                .addGap(7, 7, 7)
-                .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jTextField_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jTextField_Medico_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(datosPaciente_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jButton_ListadoPaciente_CargarOrden)))
+                        .addGap(7, 7, 7)
+                        .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jTextField_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jTextField_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
+                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(datosAnalisis_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Analisis_CargarOrden1))
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
-                .addComponent(jTextField_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jTextField_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(fecha_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(fecha_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addGap(113, 113, 113))
-            .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
+                        .addComponent(jTextField_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fecha_CargarOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fecha_CargarOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel_menuPestañasLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(jPanel_menuPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton1)
+                                    .addComponent(jRadioButton2))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_CargarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jTabbedPane_menuPestañas.addTab("Cargar Orden", jPanel_menuPestañas);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 776, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
-        );
-
-        jTabbedPane_menuPestañas.addTab("Imprimir Resultados", jPanel3);
 
         jScrollPane3.setViewportView(jTable2_TablaOrdenesPendientes);
 
@@ -351,8 +381,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(datosAnalisis_CargarOrden4, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addGroup(jPanel2_cargarResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2_cargarResultadosLayout.createSequentialGroup()
                         .addComponent(datosAnalisis_CargarOrden3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -381,6 +411,19 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane_menuPestañas.addTab("Cargar Resultados", jPanel2_cargarResultados);
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 890, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+
+        jTabbedPane_menuPestañas.addTab("Imprimir Resultados", jPanel3);
+
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jButton_Femenino.setText("Iniciar Sesion");
@@ -402,7 +445,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane_menuPestañas, javax.swing.GroupLayout.PREFERRED_SIZE, 549, Short.MAX_VALUE))
+                .addComponent(jTabbedPane_menuPestañas, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
         );
 
         pack();
@@ -417,6 +460,36 @@ public class Principal extends javax.swing.JFrame {
     private void jButton_ListadoPaciente_CargarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ListadoPaciente_CargarOrdenActionPerformed
 
     }//GEN-LAST:event_jButton_ListadoPaciente_CargarOrdenActionPerformed
+
+    private void jButton_CargarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CargarOrdenActionPerformed
+        ManagerPaciente mp = new ManagerPaciente();
+        String formato = jDateChooser_FechaIngreso.getDateFormatString();
+        
+        String nombre;
+        String apellido;
+        int dni;
+        Long telefono;
+        Date fnacimiento;
+        int edad;
+        String sexo;
+        String nombreObraSocial;
+        
+        // if controles 
+        nombre = jTextField_Nombre.getText();
+        apellido = jTextField_Apellido.getText();
+        dni = Integer.parseInt(jTextField_dni.getText());
+        Date date = jDateChooser_FechaIngreso.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat(formato);
+        String fechaNacimiento = String.valueOf(sdf.format(date));
+        
+        
+        
+        mp.cargarPaciente(nombre, apellido, dni, telefono, fNacimiento, edad, sexo, nombreObraSocial);
+        
+        
+
+
+    }//GEN-LAST:event_jButton_CargarOrdenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -466,8 +539,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel fecha_CargarOrden2;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton_Analisis_CargarOrden1;
+    private javax.swing.JButton jButton_CargarOrden;
     private javax.swing.JButton jButton_Femenino;
     private javax.swing.JButton jButton_ListadoPaciente_CargarOrden;
+    private com.toedter.calendar.JDateChooser jDateChooser_FechaIngreso;
+    private com.toedter.calendar.JDateChooser jDateChooser_fechaNacimiento;
     private javax.swing.JFrame jFrame_ListadoAnalisis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -481,6 +557,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane_menuPestañas;
@@ -488,6 +565,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable jTable2_TablaOrdenesPendientes;
     private javax.swing.JTable jTable4_cargarValoresAnalisi;
     private javax.swing.JTable jTable_Analisis;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea1_valoresDeReferencia;
     private javax.swing.JTextField jTextField_Apellido;
     private javax.swing.JTextField jTextField_Medico_CargarOrden;

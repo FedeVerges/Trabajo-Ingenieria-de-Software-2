@@ -18,19 +18,18 @@ public class Orden {
     private Paciente paciiente;
     private Analisis analisis;
     private Obra_Social obraSocial;
-    private Registro_de_cobros ingresos;
-    private Bioquimico bioquimico;
 
-    public Orden(int numero,Date fechaDeIngreso, String Medico, Paciente paciiente, Analisis analisis, Obra_Social obraSocial, Registro_de_cobros ingresos, Bioquimico bioquimico) {
+    public Orden(int numero, Date fechaDeIngreso, String Medico, Paciente paciiente, Analisis analisis, Obra_Social obraSocial, Bioquimico bioquimico) {
         this.numero = numero;
         this.fechaDeIngreso = fechaDeIngreso;
         this.Medico = Medico;
         this.paciiente = paciiente;
         this.analisis = analisis;
         this.obraSocial = obraSocial;
-        this.ingresos = ingresos;
         this.bioquimico = bioquimico;
     }
+
+  
 
     public int getNumero() {
         return numero;

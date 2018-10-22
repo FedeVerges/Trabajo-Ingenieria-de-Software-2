@@ -145,100 +145,134 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="298" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
-                                  <Component id="fecha_CargarOrden" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="Medico_cargarOrden" min="-2" pref="63" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_Medico_CargarOrden" min="-2" pref="231" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="datosPaciente_CargarOrden" min="-2" pref="137" max="-2" attributes="0"/>
+                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                              <Component id="jButton_ListadoPaciente_CargarOrden" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jTextField_Nombre" min="-2" pref="298" max="-2" attributes="0"/>
+                          <Component id="jTextField_Apellido" min="-2" pref="298" max="-2" attributes="0"/>
+                          <Component id="jTextField_dni" min="-2" pref="298" max="-2" attributes="0"/>
+                          <Component id="jTextField_telefono" min="-2" pref="298" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="fecha_CargarOrden1" min="-2" pref="128" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jDateChooser_fechaNacimiento" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="fecha_CargarOrden2" min="-2" pref="45" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="174" pref="174" max="-2" attributes="0"/>
+                              <Component id="jButton_CargarOrden" min="-2" pref="124" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField_Apellido" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
-                                  <Component id="jTextField_dni" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
-                                  <Component id="jTextField_Nombre" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="datosPaciente_CargarOrden" min="-2" pref="137" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton_ListadoPaciente_CargarOrden" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fecha_CargarOrden1" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <Component id="jTextField_telefono" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
-                                  <Component id="fecha_CargarOrden2" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="Medico_cargarOrden" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                                  <Component id="fecha_CargarOrden" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jTextField_Medico_CargarOrden" min="-2" pref="231" max="-2" attributes="0"/>
+                                  <Component id="jDateChooser_FechaIngreso" min="-2" pref="152" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="filler2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="datosAnalisis_CargarOrden1" min="-2" pref="137" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton_Analisis_CargarOrden1" min="-2" pref="91" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" pref="448" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="470" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="datosAnalisis_CargarOrden1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jButton_Analisis_CargarOrden1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="fecha_CargarOrden" min="-2" pref="27" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Medico_cargarOrden" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="jTextField_Medico_CargarOrden" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jScrollPane1" min="-2" pref="28" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="datosPaciente_CargarOrden" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jButton_ListadoPaciente_CargarOrden" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Component id="jTextField_Nombre" min="-2" pref="31" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="jTextField_Apellido" min="-2" pref="31" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="jTextField_dni" min="-2" pref="31" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="jTextField_telefono" min="-2" pref="31" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="fecha_CargarOrden1" min="-2" pref="27" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="fecha_CargarOrden2" min="-2" pref="27" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                      <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                      <Component id="filler2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="filler2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="fecha_CargarOrden" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="jDateChooser_FechaIngreso" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Medico_cargarOrden" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_Medico_CargarOrden" min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="datosPaciente_CargarOrden" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                                      <Component id="jButton_ListadoPaciente_CargarOrden" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                              <Component id="jTextField_Nombre" min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                              <Component id="jTextField_Apellido" min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="jTextField_dni" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="datosAnalisis_CargarOrden1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="jButton_Analisis_CargarOrden1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jTextField_telefono" min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="fecha_CargarOrden1" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="jDateChooser_fechaNacimiento" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fecha_CargarOrden2" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <Component id="jButton_CargarOrden" min="-2" pref="41" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane4" min="-2" pref="165" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -414,29 +448,40 @@
                 <Property name="text" type="java.lang.String" value="Femenino"/>
               </Properties>
             </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Imprimir Resultados">
-                <Property name="tabTitle" type="java.lang.String" value="Imprimir Resultados"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
+            <Component class="javax.swing.JButton" name="jButton_CargarOrden">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Ebrima" size="14" style="2"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cargar Orden"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_CargarOrdenActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="776" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="540" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser_fechaNacimiento">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser_FechaIngreso">
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel2_cargarResultados">
           <Constraints>
@@ -458,9 +503,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" min="-2" pref="462" max="-2" attributes="0"/>
                           <Component id="datosAnalisis_CargarOrden4" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="472" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" pref="526" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="90" max="32767" attributes="0"/>
+                      <EmptySpace pref="150" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="datosAnalisis_CargarOrden3" min="-2" pref="194" max="-2" attributes="0"/>
@@ -577,6 +622,28 @@
               </SubComponents>
             </Container>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Imprimir Resultados">
+                <Property name="tabTitle" type="java.lang.String" value="Imprimir Resultados"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="890" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="540" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
         </Container>
       </SubComponents>
     </Container>

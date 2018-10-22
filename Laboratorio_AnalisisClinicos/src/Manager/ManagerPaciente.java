@@ -20,11 +20,11 @@ import java.util.ArrayList;
  *
  * @author fede_
  */
-public class ManagerPacientes {
+public class ManagerPaciente {
 
     public ArrayList<Paciente> recuperarFilas() {
         Statement statement = null;
-        String query = "SELECT * FROM 'PACIENTES'";
+        String query = "SELECT * FROM 'PACIENTE'";
         ArrayList<Paciente> datosPaciente = new ArrayList<Paciente>();
         Paciente p;
         try {
@@ -32,10 +32,10 @@ public class ManagerPacientes {
 
             ResultSet resultSet = statement.executeQuery(query);
             ResultSet resultSet2 = statement.executeQuery("Select * FROM 'OBRA SOCIAL' WHERE O_Nombre =" + resultSet.getString("O_NOMBRE"));
-            Obra_Social o = new Obra_Social((resultSet2.getString("O_NOMBERE")), (resultSet2.getInt("O_TELEFONO")), (resultSet2.getFloat("O_PUB")));
+            Obra_Social obraSocial = new Obra_Social((resultSet2.getString("O_NOMBERE")), (resultSet2.getInt("O_TELEFONO")), (resultSet2.getFloat("O_PUB")));
 
             while (resultSet.next()) {
-                p = new Paciente((resultSet.getString("P_NOMBRE")), (resultSet.getString("P_APELLIDO")), (resultSet.getInt("P_DNI")), (resultSet.getLong("P_TELEFONO")), (resultSet.getString("P_FECHA_NACIMIENTO")), (resultSet.getInt("P_EDAD")), (resultSet.getString("P_SEXO")), (o));
+                p = new Paciente((resultSet.getString("P_NOMBRE")), (resultSet.getString("P_APELLIDO")), (resultSet.getInt("P_DNI")), (resultSet.getLong("P_TELEFONO")), (resultSet.getDate("P_FECHA_NACIMIENTO")), (resultSet.getInt("P_EDAD")), (resultSet.getString("P_SEXO")), (obraSocial));
                 datosPaciente.add(p);
 
             }
@@ -51,19 +51,19 @@ public class ManagerPacientes {
         return datosPaciente;
     }
 
-    public void cargarPaciente(Paciente p) throws SQLException {
+    public void cargarPaciente(String nombre, String apellido, int dni, Long telefono, Date fNacimiento, int edad, String sexo, String nombreObraSocial) throws SQLException {
         PreparedStatement ps = null;
         String insertSql = "INSERT INTO 'PACIENTES' VALUES (?,?,?,?,?,?,?,?)";
         try {
             ps = ConnectionMethods.getConection().prepareStatement(insertSql);
-            ps.setString(0, p.getNombre());
-            ps.setString(1, p.getApellido());
-            ps.setInt(2, p.getDni());
-            ps.setLong(3, p.getTelefono());
-            ps.setDate(4, (Date) p.getFechaNacimiento());
-            ps.setInt(5, p.getEdad());
-            ps.setString(6, p.getSexo());
-            ps.setString(7, p.getObraSocial().getNombre());
+            ps.setString(0, nombre);
+            ps.setString(1, apellido);
+            ps.setInt(2, dni);
+            ps.setLong(3, telefono);
+            ps.setDate(4, (Date) fNacimiento);
+            ps.setInt(5, edad);
+            ps.setString(6, sexo);
+            ps.setString(7, nombreObraSocial);
             ps.executeUpdate();
 
         } catch (SQLException e) {
